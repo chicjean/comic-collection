@@ -1,0 +1,7 @@
+<%= @series.name %>
+
+<%= link_to "Edit", edit_series_path(@series) %>
+
+<%= link_to "Delete", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
+
+<%= link_to "All Series", series_index_path %>

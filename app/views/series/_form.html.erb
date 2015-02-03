@@ -1,0 +1,14 @@
+<%= form_for(@series) do |f| %>
+	<%= render 'shared/errors', object: @series %>
+	<fieldset>
+		<p>
+			<%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+		</p>
+		<p>
+			<%= f.submit %>
+	    <%= link_to "Cancel", series_index_path %>
+	   </p>
+	</fieldset>
+<% end %>
+

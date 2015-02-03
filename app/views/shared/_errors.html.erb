@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+<section>	
+	<h2> Oops! Please correct the following errors:</h2>
+
+	<ul>
+		<% object.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+	</ul>
+</section>
+<% end %>
