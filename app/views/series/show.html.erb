@@ -1,7 +1,36 @@
 <%= @series.name %>
 
-<%= link_to "Edit", edit_series_path(@series) %>
+<% if @series.comics.any? %>
 
-<%= link_to "Delete", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
+	<table>
+		<tr>
+			<th>Issue Number</th>
+			<th>Title</th>
+			<th>Redemption Code</th>
+			<th>Redepmtion Status</th>
+			<th>Redeem</th>
+			<th></th>
+		</tr>
+		
+		<% @comics.each do |c| %>
+			<tr>
+				<td><%= c.number %></td>
+				<td><%= c.title %></td>
+				<td><%= c.redemption_code %></td>
+				<td><%= c.redeemed? %></td>
+				<td>Checkbox</td>
+				<td><%= link_to "Delete", series_comic_path(@series, c), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			</tr>
+		<% end %>
+	</table>
+<% else %>
+	<p>Add a new comic!</p>
+<% end %>
+
+<%= link_to "Edit Series Title", edit_series_path(@series) %>
+
+<%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
 
 <%= link_to "All Series", series_index_path %>
+
+<%= link_to "Add a New Comic", new_series_comic_path(@series) %>

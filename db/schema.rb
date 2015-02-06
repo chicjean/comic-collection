@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203002516) do
+ActiveRecord::Schema.define(version: 20150204192133) do
+
+  create_table "comics", force: :cascade do |t|
+    t.integer  "series_id"
+    t.string   "title"
+    t.string   "number"
+    t.string   "redemption_code"
+    t.boolean  "redeemed",        default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "comics", ["series_id"], name: "index_comics_on_series_id"
 
   create_table "series", force: :cascade do |t|
     t.string   "name"

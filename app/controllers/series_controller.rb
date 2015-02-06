@@ -6,6 +6,7 @@ class SeriesController < ApplicationController
 
 	def show
 		@series = Series.find(params[:id])
+		@comics = @series.comics
 	end
 
 	def new

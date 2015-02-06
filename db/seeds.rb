@@ -9,3 +9,4 @@
 series1 = Series.create!(name: "Rocket Raccoon")
 series2 = Series.create!(name: "Superior Spiderman")
 series3 = Series.create!(name: "Uncanny X-Men")
+

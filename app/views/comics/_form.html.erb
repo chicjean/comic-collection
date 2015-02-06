@@ -1,0 +1,22 @@
+<%= form_for([@series, @comic]) do |f| %>
+	<%= render 'shared/errors', object: @comic %>
+	<fieldset>
+		<p>
+			<%= f.label :number, "Issue Number" %>
+      <%= f.text_field :number, autofocus: true %>
+		</p>
+		<p>
+			<%= f.label :title %>
+      <%= f.text_field :title %>
+		</p>
+		<p>
+			<%= f.label :redemption_code %>
+      <%= f.text_field :redemption_code %>
+		</p>
+		<p>
+			<%= f.submit %>
+	    <%= link_to "Cancel", series_path(@series) %>
+	   </p>
+	</fieldset>
+<% end %>
+
