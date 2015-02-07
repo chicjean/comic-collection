@@ -7,19 +7,24 @@
 			<th>Issue Number</th>
 			<th>Title</th>
 			<th>Redemption Code</th>
-			<th>Redepmtion Status</th>
 			<th>Redeem</th>
 			<th></th>
 		</tr>
 		
-		<% @comics.each do |c| %>
-			<tr>
-				<td><%= c.number %></td>
-				<td><%= c.title %></td>
-				<td><%= c.redemption_code %></td>
-				<td><%= c.redeemed? %></td>
-				<td>Checkbox</td>
-				<td><%= link_to "Delete", series_comic_path(@series, c), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+		<% @comics.each do |comic| %>
+			<tr class="comic-row">
+				<td><%= comic.number %></td>
+				<td><%= comic.title %></td>
+				<td class="redemption-code <%= redemption_style(comic) %>"><%= comic.redemption_code %></td>
+				<td><%= link_to redemption_status(comic), 
+									'#', 
+									class: 'redeem-link',
+									id: comic.id, 
+									series_id: @series.id %></td>
+				<td><%= link_to "Delete", 
+									series_comic_path(@series, comic), 
+									method: :delete, 
+									data: {confirm: 'Are you sure?'} %></td>
 			</tr>
 		<% end %>
 	</table>
