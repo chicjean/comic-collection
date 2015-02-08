@@ -4,3 +4,12 @@ def series_attributes(overrides = {})
     name: "Uncanny X-Men #{random_number}",
   }.merge(overrides)
 end
+
+def comic_attributes(overrides = {})
+	random_number = (0..9).to_a.shuffle[1..10].join
+	{
+		title: "Issue #1", 
+		number: "#{random_number}", 
+		redemption_code: "123XYZ#{random_number}"
+	}
+end

@@ -1,7 +1,7 @@
-<h1>Series</h1>
+<%= link_to "Add Series", new_series_path %>
+
+
 
 <% @series.each do |s| %>
 	<p><%= link_to s.name, series_path(s) %></p>
 <% end %>
-
-<%= link_to "Add Series", new_series_path %>

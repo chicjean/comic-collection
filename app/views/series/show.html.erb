@@ -1,12 +1,19 @@
 <%= @series.name %>
+<%= link_to "Edit Series Title", edit_series_path(@series) %>
+
+<%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
+
+<%= link_to "All Series", series_index_path %>
+
+<%= link_to "Add a New Comic", new_series_comic_path(@series) %>
 
 <% if @series.comics.any? %>
-
 	<table>
 		<tr>
 			<th>Issue Number</th>
 			<th>Title</th>
 			<th>Redemption Code</th>
+			<th>BOOLEAN</th>
 			<th>Redeem</th>
 			<th></th>
 		</tr>
@@ -16,6 +23,7 @@
 				<td><%= comic.number %></td>
 				<td><%= comic.title %></td>
 				<td class="redemption-code <%= redemption_style(comic) %>"><%= comic.redemption_code %></td>
+				<td><%= comic.redeemed? %></td>
 				<td><%= link_to redemption_status(comic), 
 									'#', 
 									class: 'redeem-link',
@@ -31,11 +39,3 @@
 <% else %>
 	<p>Add a new comic!</p>
 <% end %>
-
-<%= link_to "Edit Series Title", edit_series_path(@series) %>
-
-<%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
-
-<%= link_to "All Series", series_index_path %>
-
-<%= link_to "Add a New Comic", new_series_comic_path(@series) %>
