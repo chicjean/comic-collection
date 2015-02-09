@@ -4,6 +4,65 @@
 
 @import 'fonts';
 
-h1 {
-	font-family: $header-font; 
+#series-title {
+	text-transform: uppercase; 
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+#show-title {
+	font-family: $header-font;
+	text-transform: uppercase; 
+	font-size: 1.75em;
+}
+
+#add-comic {
+	display: flex; 
+	justify-content: center;
+	text-transform: uppercase;
+	font-size: 1.5em;
+	width: 75%;
+	margin-top: 40px;
+}
+
+#filter {
+	display: flex;
+	flex-direction: row;
+	width: 75%;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid black;
+	border-radius: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#show-comics {
+	th {
+		text-transform: uppercase;
+		font-size: 1.25em;
+		font-weight: bold;
+		padding-left: .75em;
+		padding-right: .75em;
+	}
+}
+
+.comic-row {
+	text-align: center;
+
+	#row-title {
+		word-wrap: break-word;
+		width: 45%;
+		text-align: left;
+	}
+}
+
+#series-form {
+	border: none;
+
+	input#name-field {
+		width: 75%;
+	}
 }

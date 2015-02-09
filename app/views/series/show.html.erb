@@ -1,19 +1,18 @@
-<%= @series.name %>
-<%= link_to "Edit Series Title", edit_series_path(@series) %>
-
-<%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: 'Are you sure?'} %>
-
-<%= link_to "All Series", series_index_path %>
-
-<%= link_to "Add a New Comic", new_series_comic_path(@series) %>
+<div class="series-title", id="show-title"><%= @series.name %></div>
 
 <% if @series.comics.any? %>
-	<table>
+<div id="filter">
+	<h3>Sort By:</h3>
+	<%= link_to "Issue Number", '#' %> | 
+	<%= link_to "Redeemed", "#" %> | 
+	<%= link_to "Unredeemed", '#' %>
+</div>
+
+	<table id="show-comics">
 		<tr>
-			<th>Issue Number</th>
+			<th>Issue #</th>
 			<th>Title</th>
-			<th>Redemption Code</th>
-			<th>BOOLEAN</th>
+			<th>Code</th>
 			<th>Redeem</th>
 			<th></th>
 		</tr>
@@ -21,9 +20,8 @@
 		<% @comics.each do |comic| %>
 			<tr class="comic-row">
 				<td><%= comic.number %></td>
-				<td><%= comic.title %></td>
+				<td id="row-title"><%= comic.title %></td>
 				<td class="redemption-code <%= redemption_style(comic) %>"><%= comic.redemption_code %></td>
-				<td><%= comic.redeemed? %></td>
 				<td><%= link_to redemption_status(comic), 
 									'#', 
 									class: 'redeem-link',
@@ -37,5 +35,17 @@
 		<% end %>
 	</table>
 <% else %>
-	<p>Add a new comic!</p>
+	<div id="add-comic">
+		<%= link_to "Add a New Comic!!", new_series_comic_path(@series) %>
+	</div>
+<% end %>
+
+
+
+<% content_for(:side) do %>
+	<br>
+	<li><%= link_to "Edit Series Title", edit_series_path(@series) %></li>
+  <li><%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %></li>
+	<br>
+	<li><%= link_to "Add a New Comic", new_series_comic_path(@series) %></li>	
 <% end %>

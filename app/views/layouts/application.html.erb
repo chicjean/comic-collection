@@ -12,7 +12,13 @@
 
 <%= render 'layouts/flashes' %>
 
-<%= yield %>
+<div id="container">
+	<%= render 'layouts/sidebar' %>
+
+	<div id="content">
+		<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>

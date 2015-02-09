@@ -1,0 +1,59 @@
+@import 'fonts';
+
+body {
+	font-family: $primary-font;
+	font-size: 16px;
+	color: black; 
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none; 
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline; 
+	color: black;
+}
+
+#header {
+	font-family: $header-font;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 3em;
+
+	a:hover {
+		text-decoration: none; 
+	}
+}
+
+#container {
+	display: flex; 
+	flex-direction: row;
+	justify-content: flex-start;
+	padding-top: 10px;
+
+	#sidebar {
+		padding-left: 4em;
+		width: 20%;
+	}
+
+	#content {
+		width: 70%;
+	}
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		padding-top: .25em; 
+		padding-bottom: .25em;
+	}
+}
+
+.form-title {
+	border-bottom: 1px solid black;
+}
