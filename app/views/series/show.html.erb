@@ -3,9 +3,9 @@
 <% if @series.comics.any? %>
 <div id="filter">
 	<h3>Sort By:</h3>
-	<%= link_to "Issue Number", '#' %> | 
-	<%= link_to "Redeemed", "#" %> | 
-	<%= link_to "Unredeemed", '#' %>
+	<%= link_to "Issue Number", series_path(@series, :scope => 'issue_sort') %> | 
+	<%= link_to "Redeemed", series_path(@series, :scope => 'redeemed') %> | 
+	<%= link_to "Unredeemed", series_path(@series, :scope => 'unredeemed') %>
 </div>
 
 	<table id="show-comics">

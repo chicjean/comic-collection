@@ -6,7 +6,17 @@ class SeriesController < ApplicationController
 
 	def show
 		@series = Series.find(params[:id])
-		@comics = @series.comics
+	
+		case params[:scope] 
+	  when 'issue_sort'
+	  	@comics = @series.comics.issue_sort
+	  when 'redeemed'
+	  	@comics = @series.comics.redeemed
+	  when 'unredeemed'
+	  	@comics = @series.comics.unredeemed
+	  else
+	    @comics = @series.comics.issue_sort
+	  end
 	end
 
 	def new
