@@ -1,4 +1,5 @@
 @import 'fonts';
+@import 'colors';
 
 /* FLASHES */
 
@@ -12,23 +13,23 @@
   box-shadow: #ffc 0 0 4px;
   
   &.notice {
-    background-color: #7AD179;
+    background-color: $notice-color;
   }
 
   &.alert {
-    background-color: #FFF167;
+    background-color: $alert-color;
   }
 }
 
 /* ERRORS */
 
-/*section#errors {
+section#errors {
   margin: 1em 0;
   padding: 1em;
-  background: $errors-background-color;
+  background: $alert-color;
 
   h2 {
-    color: $errors-text-color;
+    color: $primary-color;
     font-size: 1.25em;
   }
 
@@ -38,4 +39,3 @@
     font-weight: bold;
   }
 }
-*/

@@ -1,12 +1,8 @@
 <div class="series-title", id="show-title"><%= @series.name %></div>
 
 <% if @series.comics.any? %>
-<div id="filter">
-	<h3>Sort By:</h3>
-	<%= link_to "Issue Number", series_path(@series, :scope => 'issue_sort') %> | 
-	<%= link_to "Redeemed", series_path(@series, :scope => 'redeemed') %> | 
-	<%= link_to "Unredeemed", series_path(@series, :scope => 'unredeemed') %>
-</div>
+
+	<p><%= filtered_comic_count(@series) %></p>
 
 	<table id="show-comics">
 		<tr>
@@ -48,4 +44,19 @@
   <li><%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %></li>
 	<br>
 	<li><%= link_to "Add a New Comic", new_series_comic_path(@series) %></li>	
+
+	<div id="filter">
+	<h3>Sort By:</h3>
+<!-- 	<select onchange="if(this.value){window.location=this.value;}">
+		<option><%= link_to "Show All", @series %></option>
+		<option><%= link_to "Redeemed", series_redeemed_path(@series) %></option> 
+		<option><%= link_to "Unredeemed", series_unredeemed_path(@series) %></option>
+	</select>	 -->
+
+	<%= link_to "Show All", @series %>
+	<br>
+	<%= link_to "Redeemed", series_redeemed_path(@series) %>
+	<br>
+	<%= link_to "Unredeemed", series_unredeemed_path(@series) %>
+</div>
 <% end %>

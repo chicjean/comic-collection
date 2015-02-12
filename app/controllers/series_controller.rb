@@ -8,8 +8,6 @@ class SeriesController < ApplicationController
 		@series = Series.find(params[:id])
 	
 		case params[:scope] 
-	  when 'issue_sort'
-	  	@comics = @series.comics.issue_sort
 	  when 'redeemed'
 	  	@comics = @series.comics.redeemed
 	  when 'unredeemed'

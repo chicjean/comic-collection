@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'fonts';
+@import 'colors';
 
 #series-title {
 	text-transform: uppercase; 
@@ -14,6 +15,7 @@
 	font-family: $header-font;
 	text-transform: uppercase; 
 	font-size: 1.75em;
+	margin-bottom: .5em;
 }
 
 #add-comic {
@@ -25,7 +27,7 @@
 	margin-top: 40px;
 }
 
-#filter {
+/*#filter {
 	display: flex;
 	flex-direction: row;
 	width: 75%;
@@ -37,7 +39,7 @@
 	padding-right: 10px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-}
+}*/
 
 #show-comics {
 	th {
@@ -47,6 +49,11 @@
 		padding-left: .75em;
 		padding-right: .75em;
 	}
+
+	tbody tr:hover {
+  font-weight: bold;
+	}
+
 }
 
 .comic-row {

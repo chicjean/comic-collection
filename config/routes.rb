@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   root "series#index"
 
- 	#get '/series/filter/:scope' => "series#show", as: :filtered_comics
+  get '/series/:id/redeemed' => "series#show", scope: 'redeemed', as: 'series_redeemed'
+  get '/series/:id/unredeemed' => "series#show", scope: 'unredeemed', as: 'series_unredeemed'
 
   resources :series do 
     resources :comics do 

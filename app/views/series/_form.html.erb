@@ -8,7 +8,11 @@
 		</p>
 		<p>
 			<%= f.submit %> | 
-	    <%= link_to "Cancel", series_index_path %>
+			<% if current_page?(new_series_path) %>
+		    <%= link_to "Cancel", series_index_path %>
+		  <% else %>
+		  	<%= link_to "Cancel", @series %>
+		  <% end %>
 	   </p>
 	</fieldset>
 <% end %>
