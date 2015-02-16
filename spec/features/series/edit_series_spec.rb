@@ -7,7 +7,7 @@ describe "Editing a series" do
 
 		visit edit_series_path(series)
 
-		fill_in "Name", with: "Batman"
+		find('#name-field').set("Batman")
 
 		click_button "Update Series"
 
@@ -22,7 +22,7 @@ describe "Editing a series" do
 
 		visit edit_series_path(series1)
 
-		fill_in "Name", with: "Batman"
+		find('#name-field').set("Batman")
 
 		click_button "Update Series"
 

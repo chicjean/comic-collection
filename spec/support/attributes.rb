@@ -11,5 +11,14 @@ def comic_attributes(overrides = {})
 		title: "Issue #1", 
 		number: "#{random_number}", 
 		redemption_code: "123XYZ#{random_number}"
-	}
+	}.merge(overrides)
 end
+
+# def user_attribues(overrides = {})
+# 	{
+# 		name: "User Name", 
+# 		email: "user@example.com",
+# 		password: "password",
+# 		password_confirmation: "password"
+# 	}.merge(overrides)
+# end

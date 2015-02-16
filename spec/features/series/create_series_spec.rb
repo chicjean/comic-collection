@@ -5,11 +5,11 @@ describe "Creating a series" do
 	it "saves the series and show's the new series show page" do 
 		visit series_index_url
 
-		click_link "Add Series"
+		click_link "Add New Series"
 
 		expect(current_path).to eq(new_series_path)
 
-		fill_in "Name", with: "The Wizard of Oz"
+		find('#name-field').set("The Wizard of Oz")
 
 		click_button "Create Series"
 

@@ -58,3 +58,20 @@ ul {
 .form-title {
 	border-bottom: 1px solid $primary-color;
 }
+
+#sign-in-button {
+	text-transform: uppercase; 
+	font-family: $header-font;
+	border-radius: 4px; 
+	border: 1px solid $primary-color; 
+	width: 150px; 
+	text-align: center;
+	padding-top: 5px; 
+	padding-bottom: 5px;
+	background-color: $secondary-color;
+
+	a:hover {
+		text-decoration: none; 
+		font-weight: bold;
+	}
+}
