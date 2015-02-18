@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_action :set_user
+	before_action :require_signin 
 
 	def show
 	end

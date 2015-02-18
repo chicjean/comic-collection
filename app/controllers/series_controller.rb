@@ -1,5 +1,7 @@
 class SeriesController < ApplicationController
 
+	before_action :require_signin
+	
 	def index
 		@series = Series.alpha_sort
 	end
