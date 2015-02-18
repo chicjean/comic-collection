@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   resources :users
 
-  root "series#index"
+  resource :session
+
+  root "sessions#new"
 
   get '/series/:id/redeemed' => "series#show", scope: 'redeemed', as: 'series_redeemed'
   get '/series/:id/unredeemed' => "series#show", scope: 'unredeemed', as: 'series_unredeemed'

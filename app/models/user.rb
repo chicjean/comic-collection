@@ -7,4 +7,10 @@ class User < ActiveRecord::Base
 			  			uniqueness: {case_sensitive: false }, 
 			  			format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, 
 			  			length: { minimum: 10, allow_blank: true }
+
+	def self.authenticate(email, password)
+		user = User.find_by(email: email)
+		user && user.authenticate(password)
+	end
+
 end

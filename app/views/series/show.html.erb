@@ -1,4 +1,8 @@
-<div class="series-title", id="show-title"><%= @series.name %></div>
+<header>
+	<span id="show-title"><%= @series.name %></span>
+	<span class="header-options"> <%= link_to "Edit Title", edit_series_path(@series) %>  |  <%= link_to "Delete Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %></span>
+</header>
+
 
 <% if @series.comics.any? %>
 
@@ -40,10 +44,7 @@
 
 <% content_for(:side) do %>
 	<br>
-	<li><%= link_to "Edit Series Title", edit_series_path(@series) %></li>
-  <li><%= link_to "Delete this Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %></li>
-	<br>
-	<li><%= link_to "Add a New Comic", new_series_comic_path(@series) %></li>	
+	<li class="button"><%= link_to "Add New Comic", new_series_comic_path(@series) %></li>	
 
 	<div id="filter">
 	<h3>Sort By:</h3>

@@ -1,10 +1,13 @@
 <aside id="sidebar">
 	<nav>
-		<p id="sign-in-button"><%= link_to "Sign In!", '#' %></p>
-		<ul>
-			<li><%= link_to "All Series", series_index_path %></li>
-			<li><%= link_to "Add New Series", new_series_path %></li>
-		<%= content_for(:side) %>
-		</ul>
+		<% if current_user %>
+			<ul>
+				<li class="button"><%= link_to "All Series", series_index_path %></li>
+				<li class="button"><%= link_to "Add New Series", new_series_path %></li>
+			<%= content_for(:side) %>
+			</ul>
+		<% else %>
+			<p></p>
+		<% end %>
 	</nav>
 </aside>

@@ -1,23 +1,18 @@
-<h3 class="form-title"><%= @user.name %>'s Profile</h3>
+<header id="user-show-header">
+	<h3 class="form-title"><%= @user.name %>'s Profile 
+		<span class="header-options"> <%= link_to "Edit Profile", edit_user_path(@user) %></span>
+		<span class="header-options"><%= link_to "Delete Profile", @user, 
+							method: :delete, 
+							data: {confirm: "Are you sure you want to delete your user account?"} %></span>
+	</h3>
+</header>
+
 
 <ul>
 	<li>
-		Your Name: <%= @user.name %>
+		<span class="uppercase-title">Name: </span> <%= @user.name %>
 	</li>
 	<li>
-		Your Email: <%= @user.email %>
+		<span class="uppercase-title">Email: </span> <%= @user.email %>
 	</li>
 </ul>
-
-<% content_for(:side) do %>
-	<br>
-	<li>
-		<%= link_to "Edit Profile", edit_user_path(@user) %>
-	</li>
-	<li>
-		<%= link_to "Delete Profile", @user, 
-						method: :delete, 
-						data: {confirm: "Are you sure you want to delete your user account?"} %>
-	</li>
-
-<% end %>
