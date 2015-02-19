@@ -23,7 +23,7 @@
 				<td id="row-title"><%= comic.title %></td>
 				<td class="redemption-code <%= redemption_style(comic) %>"><%= comic.redemption_code %></td>
 				<td><%= link_to redemption_status(comic), 
-									'#', 
+									'', 
 									class: 'redeem-link',
 									id: comic.id, 
 									series_id: @series.id %></td>
