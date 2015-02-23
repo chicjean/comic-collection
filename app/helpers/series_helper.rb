@@ -6,12 +6,8 @@ module SeriesHelper
 		elsif current_page?(series_redeemed_path(series))
 			"You have #{pluralize @comics.count, 'redeemed comic'} in your #{series.name} Collection."
 		else 
-			"You have #{pluralize @comics.count, 'comic'} in your #{series.name} Collection."
+			"You have #{pluralize @comics.count, 'comic'} in your #{series.name} Collection. #{pluralize @comics.unredeemed.count, 'is'} unredeemed!"
 		end
 	end
 
 end
-
-
-#Add updated count with JS. 
-#Add drop down filter menu

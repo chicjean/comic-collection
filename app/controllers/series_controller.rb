@@ -8,6 +8,7 @@ class SeriesController < ApplicationController
 
 	def show
 		@series = Series.find(params[:id])
+		@series_id = params[:id]
 	
 		case params[:scope] 
 	  when 'redeemed'
