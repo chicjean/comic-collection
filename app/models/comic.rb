@@ -8,4 +8,4 @@ class Comic < ActiveRecord::Base
   scope :redeemed, -> { issue_sort.where(redeemed: true) }
   scope :unredeemed, -> { issue_sort.where(redeemed: false) }
 
-end
+end 
