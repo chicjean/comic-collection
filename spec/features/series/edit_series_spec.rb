@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe "Editing a series" do 
 
+	before do
+		user = User.create!(user_attributes)
+
+		sign_in(user)
+	end
+
 	it "updates the series title and shows the updated series name" do 
 		series = Series.create!(series_attributes)
 

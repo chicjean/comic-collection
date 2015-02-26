@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe "Deleting a series" do 
 
+	before do
+		user = User.create!(user_attributes)
+
+		sign_in(user)
+	end
+
 	it "destroys the series and shows the main page without that series" do 
 		series = Series.create!(series_attributes)
 

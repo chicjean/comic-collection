@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe "Creating a series" do 
 
+	before do
+		user = User.create!(user_attributes)
+
+		sign_in(user)
+	end
+
 	it "saves the series and show's the new series show page" do 
 		visit series_index_url
 

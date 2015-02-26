@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe "Navigating series" do 
 
+	before do
+		user = User.create!(user_attributes)
+
+		sign_in(user)
+	end
+
 	it "allows navigation from the main show page to the series page" do 
 		series = Series.create!(series_attributes)
 
