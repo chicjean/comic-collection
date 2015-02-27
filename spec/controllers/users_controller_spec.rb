@@ -3,26 +3,71 @@ require 'spec_helper'
 describe UsersController do
 
 	before do 
-		user = User.create!(user_attributes)
+		@user = User.create!(user_attributes)
 	end
 
 	context "when not signed in " do 
 
-		it "cannot view the user"
+		before do
+      session[:user_id] = nil
+    end
 
-		it "cannot updated the user"
+		it "cannot access show" do
+      get :show, id: @user
 
-		it "cannot destroy the user"
+      expect(response).to redirect_to(root_url)
+    end
+
+		it "cannot access edit" do 
+			get :edit, id: @user
+
+			expect(response).to redirect_to(root_url)
+		end
+
+		it "cannot access update" do 
+			patch :update, id: @user
+
+			expect(response).to redirect_to(root_url)
+		end
+
+		it "cannot destroy the user" do 
+			delete :destroy, id: @user
+
+			expect(response).to redirect_to(root_url)
+		end
 
 	end
 
 	context "when signed in as the wrong user" do 
 
-		it "cannot view another user"
+		before do
+      @wrong_user = User.create!(user_attributes(email: "wrong@example.com"))
+      session[:user_id] = @wrong_user
+    end
 
-		it "cannot updated another user"
+		it "cannot access show for another user" do 
+			get :show, id: @user
 
-		it "cannot destroy another user"
+			expect(response).to redirect_to(series_index_url)
+		end
+
+		it "cannot access edit for another user" do 
+			get :edit, id: @user
+
+			expect(response).to redirect_to(series_index_url)
+		end
+
+		it "cannot access update for another user" do 
+			patch :update, id: @user
+
+			expect(response).to redirect_to(series_index_url)
+		end
+
+		it "cannot destroy another user" do 
+			delete :destroy, id: @user
+
+			expect(response).to redirect_to(series_index_url)
+		end
 
 	end
  

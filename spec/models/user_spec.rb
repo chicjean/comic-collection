@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe "A user" do 
 
+	it "is valid with example attributes" do
+		user = User.new(user_attributes)
+
+		user.valid?
+
+		expect(user.errors.any?).to eq(false)
+	end
+
 	it "requires a name" do
 		user = User.new(name: "")
 
@@ -27,9 +35,15 @@ describe "A user" do
 		expect(user2.errors[:email].any?).to eq(true)
 	end
 
-	it "requires a properly formatted email"
+	it "requires a properly formatted email" do 
+		emails = %w[user@example.com first.last@example.com]
 
-	it "rejects a duplicate email" 
+		emails.each do |email|
+      user = User.new(email: email)
+      user.valid?
+      expect(user.errors[:email].any?).to eq(false)
+    end
+  end
 
 	it "requires a password" do 
 		user = User.new(email: "")
@@ -39,15 +53,28 @@ describe "A user" do
 		expect(user.errors[:password].any?).to eq(true)
 	end
 
-	it "requires a password confirmation when a password is present"
+	it "requires a password confirmation when a password is present" do 
+		user = User.new(password: "secret", password_confirmation: "")
 
-	it "requires the password to match the password confirmation"
+    user.valid?
 
-	it "automatically encrypts the password into the password_digest attribute" 
+    expect(user.errors[:password_confirmation].any?).to eq(true)
+	end
 
-	it "does not require a password when updating"
+	it "requires the password to match the password confirmation" do 
+		user = User.new(password: "secret", password_confirmation: "wrongpassword")
 
-	it "is valid with example attributes"
+		user.valid?
+
+		expect(user.errors[:password_confirmation].any?).to eq(true)
+	end
+
+	it "automatically encrypts the password into the password_digest attribute" do 
+		user = User.new(password: "secret")
+
+    expect(user.password_digest.present?).to eq(true)
+  end
+
 end
 
 describe "authenticate" do
