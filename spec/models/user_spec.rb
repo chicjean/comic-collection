@@ -18,11 +18,18 @@ describe "A user" do
 		expect(user.errors[:email].any?).to eq(true)
 	end
 
-	it "requires a unique email"
+	it "requires a unique email" do 
+		user1 = User.create!(user_attributes)
+		user2 = User.new(email: user1.email)
+
+		user2.valid?
+
+		expect(user2.errors[:email].any?).to eq(true)
+	end
 
 	it "requires a properly formatted email"
 
-	it "rejects a duplicate email"
+	it "rejects a duplicate email" 
 
 	it "requires a password" do 
 		user = User.new(email: "")
