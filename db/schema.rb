@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212022424) do
+ActiveRecord::Schema.define(version: 20150301004037) do
 
   create_table "comics", force: :cascade do |t|
     t.integer  "series_id"
     t.string   "title"
-    t.string   "number"
+    t.integer  "number"
     t.string   "redemption_code"
     t.boolean  "redeemed",        default: false
     t.datetime "created_at",                      null: false

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resource :session
 
-  root "sessions#new"
+  get 'signin' => "sessions#new"
+
+  root "series#index"
 
   get '/series/:id/redeemed' => "series#show", scope: 'redeemed', as: 'series_redeemed'
   get '/series/:id/unredeemed' => "series#show", scope: 'unredeemed', as: 'series_unredeemed'
