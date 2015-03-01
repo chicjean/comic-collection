@@ -54,11 +54,7 @@ describe SeriesController do
 
 			expect(response).to redirect_to(root_url)
 		end
-
-		it "cannot view an indivial series' redeemed comics" 
-
-		it "cannot view an individual series' undredeemed comics"
-
+		
 	end
 
 end

@@ -41,7 +41,7 @@ describe "A comic" do
 
 	end
 
-	it "HOW DO I WRITE A TEST FOR MY SCOPES?"
+	it "HOW DO I WRITE A TEST FOR MY SCOPES? redeemed/unredeemed/isue_sort"
 
 	it "shows the series' comics sorted by issue number"
 

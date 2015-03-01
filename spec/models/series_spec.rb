@@ -45,7 +45,7 @@ describe "A series" do
 		expect(series2.errors[:name].any?).to eq(true)
 	end
 
-	it "sorts series by title alphabetically"
+	it "sorts series by title alphabetically (alpha sort)"
 
 	
 end

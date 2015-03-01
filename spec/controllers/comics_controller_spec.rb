@@ -24,7 +24,11 @@ describe ComicsController do
 			expect(response).to redirect_to(root_url)
 		end
 
-		it "cannot access delete" 
+		it "cannot access delete" do 
+			delete :destroy, id: 1, series_id: @series
+
+			expect(response).to redirect_to(root_url)
+		end
 
 	end
 
