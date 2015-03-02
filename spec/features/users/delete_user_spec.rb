@@ -13,7 +13,7 @@ describe "Deleting a user" do
 
 	 	click_link "Delete Profile"
 
-	 	expect(current_path).to eq(root_path)
+	 	expect(current_path).to eq(signin_path)
 	 	expect(page).to have_text("Your account has been successfully deleted")
 	 end
 
@@ -22,7 +22,7 @@ describe "Deleting a user" do
 
 	 	click_link "Delete Profile"
 
-	 	expect(current_path).to eq(root_path)
+	 	expect(current_path).to eq(signin_path)
 		expect(page).not_to have_link("Sign Out")
 	 end
 

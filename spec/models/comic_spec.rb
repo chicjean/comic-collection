@@ -38,11 +38,14 @@ describe "A comic" do
 		comic = Comic.new(comic_attributes)
 
 		expect(comic.redeemed).to eq(false)
-
 	end
 
-	it "HOW DO I WRITE A TEST FOR MY SCOPES? redeemed/unredeemed/isue_sort"
+	it "shows the series' comics sorted by issue number" do 
+		comic1 = Comic.create!(comic_attributes)
+		comic2 = Comic.create!(comic_attributes)
+	end
+	##WORK ON THIS^
 
-	it "shows the series' comics sorted by issue number"
+	it "HOW DO I WRITE A TEST FOR MY SCOPES? redeemed/unredeemed/isue_sort"
 
 end

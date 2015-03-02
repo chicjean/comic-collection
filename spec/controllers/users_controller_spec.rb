@@ -15,25 +15,25 @@ describe UsersController do
 		it "cannot access show" do
       get :show, id: @user
 
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(signin_path)
     end
 
 		it "cannot access edit" do 
 			get :edit, id: @user
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot access update" do 
 			patch :update, id: @user
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot destroy the user" do 
 			delete :destroy, id: @user
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 
 	end

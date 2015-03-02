@@ -15,19 +15,19 @@ describe ComicsController do
 		it "cannot accesst new" do
 			get :new, series_id: @series
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 	
 		it "cannot access create" do 
 			post :create, series_id: @series
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot access delete" do 
 			delete :destroy, id: 1, series_id: @series
 
-			expect(response).to redirect_to(root_url)
+			expect(response).to redirect_to(signin_path)
 		end
 
 	end
