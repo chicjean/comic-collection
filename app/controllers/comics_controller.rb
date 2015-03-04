@@ -2,6 +2,7 @@ class ComicsController < ApplicationController
 
 	before_action :set_series
 	before_action :require_signin
+	before_action :require_admin, only: :destroy
 
 	def new
 		@comic = @series.comics.new

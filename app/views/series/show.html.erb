@@ -28,10 +28,12 @@
 									class: 'redeem-link',
 									id: comic.id, 
 									series_id: @series.id %></td>
-				<td><%= link_to "Delete", 
-									series_comic_path(@series, comic), 
-									method: :delete, 
-									data: {confirm: 'Are you sure?'} %></td>
+				<% if current_user_admin? %>
+					<td><%= link_to "Delete", 
+										series_comic_path(@series, comic), 
+										method: :delete, 
+										data: {confirm: 'Are you sure?'} %></td>
+				<% end %>
 			</tr>
 		<% end %>
 	</table>

@@ -73,4 +73,15 @@ describe "Viewing an individual series" do
 
 	end
 
+	context "when a user is not an admin" do
+
+		it "does not show a link to delete a comic"
+	end
+
+	context "when a user is an admin" do 
+
+		it "shows a link to delete a comic"
+	
+	end
+
 end

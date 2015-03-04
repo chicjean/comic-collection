@@ -1,10 +1,26 @@
 class UsersController < ApplicationController
 
-	before_action :set_user
+	before_action :set_user, except: [:new, :create]
 	before_action :require_signin 
-	before_action :require_current_user
+
+	before_action :require_correct_user, only: [:edit, :update, :destroy]
+	before_action :require_admin, only: [:new, :create]
 	
 	def show
+	end
+
+	def new
+		@user = User.new
+	end
+
+	def create
+		@user = User.new(user_params)
+
+		if @user.save
+			redirect_to @user, notice: "User Successfully Created!"
+		else 
+			render :new
+		end
 	end
 
 	def edit
@@ -35,7 +51,7 @@ private
 		params.require(:user).permit(:name, :email, :password, :password_confirmation)
 	end
 
-	def require_current_user 
+	def require_correct_user 
 		unless @user == current_user
 			redirect_to series_index_path, alert: "You are not authorized to access that page!"
 		end

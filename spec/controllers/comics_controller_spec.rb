@@ -32,4 +32,19 @@ describe ComicsController do
 
 	end
 
+	context "when not signed in as an admin user" do 
+		
+		before do
+      non_admin = User.create!(user_attributes(admin: false))
+      session[:user_id] = non_admin.id
+    end
+
+		it "cannot access delete" do 
+			delete :destroy, id: 1, series_id: @series
+
+			expect(response).to redirect_to(signin_path)
+		end
+
+	end
+
 end

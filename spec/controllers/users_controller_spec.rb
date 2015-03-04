@@ -70,5 +70,12 @@ describe UsersController do
 		end
 
 	end
+
+	context "when not signed in as an admin user" do 
+
+		it "cannot access new"
+
+		it "cannot access create"
+	end
  
 end

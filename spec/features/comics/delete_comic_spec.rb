@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "Deleting a comic" do 
 
 	before do
-		user = User.create!(user_attributes)
+		admin = User.create!(user_attributes(admin: true))
 
-		sign_in(user)
+		sign_in(admin)
 	end
 
 	it "destroys the comic and shows the series show page without that comic" do 
