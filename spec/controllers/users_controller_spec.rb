@@ -45,12 +45,6 @@ describe UsersController do
       session[:user_id] = @wrong_user
     end
 
-		it "cannot access show for another user" do 
-			get :show, id: @user
-
-			expect(response).to redirect_to(series_index_url)
-		end
-
 		it "cannot access edit for another user" do 
 			get :edit, id: @user
 
