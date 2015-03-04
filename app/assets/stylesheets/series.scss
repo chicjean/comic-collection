@@ -17,29 +17,6 @@
 	}
 }
 
-#add-comic {
-	display: flex; 
-	justify-content: center;
-	margin-top: 40px;
-	width: 75%;
-
-	button {
-		text-transform: uppercase;
-		font-family: $header-font;
-		text-align: center;
-		font-size: 1.5em;
-		border-radius: 4px; 
-	border: 1px solid $primary-color;  
-	background-color: $secondary-color;
-	width: 300px;
-	}
-
-	a:hover {
-		text-decoration: none; 
-		font-weight: bold;
-	}
-}
-
 #show-comics {
 	th {
 		text-transform: uppercase;
@@ -62,13 +39,5 @@
 		word-wrap: break-word;
 		width: 45%;
 		text-align: left;
-	}
-}
-
-#series-form {
-	border: none;
-
-	input#name-field {
-		width: 75%;
 	}
 }

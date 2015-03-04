@@ -1,10 +1,10 @@
 <%= form_for(@series) do |f| %>
 	<%= render 'shared/errors', object: @series %>
-	<fieldset id="series-form">
+	<fieldset class="form-container">
 		<p>
 			<%= f.label :name, "Series Name" %>
 			<br>
-      <%= f.text_field :name, autofocus: true, id:"name-field" %>
+      <%= f.text_field :name, autofocus: true, size: 70 %>
 		</p>
 		<p>
 			<%= f.submit %> | 

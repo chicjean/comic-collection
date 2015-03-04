@@ -1,6 +1,6 @@
 <%= form_for([@series, @comic]) do |f| %>
 	<%= render 'shared/errors', object: @comic %>
-	<fieldset id="comic-form">
+	<fieldset class="form-container">
 		<p>
 			<%= f.label :number, "Issue Number" %>
 			<br>
