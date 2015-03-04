@@ -20,24 +20,3 @@
     background-color: $alert-color;
   }
 }
-
-
-/* AM I USING THIS? */
-/* ERRORS */
-
-section#errors {
-  margin: 1em 0;
-  padding: 1em;
-  background: $alert-color;
-
-  h2 {
-    color: $primary-color;
-    font-size: 1.25em;
-  }
-
-  h3 {
-    font-size: 1em;
-    margin: .5em 0;
-    font-weight: bold;
-  }
-}
