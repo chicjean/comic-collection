@@ -45,7 +45,11 @@ describe "A series" do
 		expect(series2.errors[:name].any?).to eq(true)
 	end
 
-	it "sorts series by title alphabetically (alpha sort)"
+	it "sorts series by title alphabetically (alpha_sort)" do 
+		series1 = Series.create!(name: "Z Comic")
+		series2 = Series.create!(name: "A Comic")
 
+		Series.alpha_sort.should == [series2, series1]
+	end
 	
 end

@@ -67,9 +67,18 @@ describe UsersController do
 
 	context "when not signed in as an admin user" do 
 
-		it "cannot access new"
+		it "cannot access new" do 
+			get :new
 
-		it "cannot access create"
+			expect(response).to redirect_to(signin_path)
+		end
+
+		it "cannot access create" do 
+			get :create
+
+			expect(response).to redirect_to(signin_path)
+		end
+
 	end
  
 end

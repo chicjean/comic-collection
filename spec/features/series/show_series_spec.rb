@@ -15,6 +15,16 @@ describe "Viewing an individual series" do
 		expect(page).to have_text(@series.name)
 	end
 
+	it "does not show a link to delete a comic when a user is not an admin" do 
+		comic = @series.comics.create!(comic_attributes)
+
+		visit series_path(@series)
+
+		within_table('#show-comics')do
+			expect(page).not_to have_text("Delete")
+		end
+	end
+
 	context "when a series has comics" do
 
 		it "lists the series' comics details" do 
@@ -27,9 +37,25 @@ describe "Viewing an individual series" do
 			expect(page).to have_text(comic.redemption_code)
 		end
 
-		it "does not show the redemption code when a redemption code has been redeemed" 
+		it "does not show the redemption code when a redemption code has been redeemed" do 
+			comic = @series.comics.create!(comic_attributes(redeemed: true))
+
+			visit series_path(@series)
+
+			within_table('#show-comics') do 
+				expect(page).not_to have_text(comic.redemption_code)
+			end
+		end
 		
-		it "shows the redemption code when a redemption code has not been redeemed" 
+		it "shows the redemption code when a redemption code has not been redeemed" do 
+			comic = @series.comics.create!(comic_attributes(redeemed: false))
+
+			visit series_path(@series)
+
+			within_table('#show-comics') do 
+				expect(page).to have_text(comic.redemption_code)
+			end
+		end
 
 	end
 
@@ -54,15 +80,25 @@ describe "Viewing an individual series" do
 
 	end
 
-	context "when a user is not an admin" do
+end
 
-		it "does not show a link to delete a comic"
-	end
+describe "Viewing an individual series when a user is an admin" do 
 
-	context "when a user is an admin" do 
+		before do 
+			@series = Series.create!(series_attributes)
 
-		it "shows a link to delete a comic"
+			admin_user = User.create!(user_attributes(admin: true))
+			sign_in(admin_user)
+		end
+
+		it "shows a link to delete a comic" do 
+			comic = @series.comics.create!(comic_attributes)
+
+			visit series_path(@series)
+
+			within_table('#show-comics')do
+				expect(page).to have_text("Delete")
+			end
+		end
 	
-	end
-
 end

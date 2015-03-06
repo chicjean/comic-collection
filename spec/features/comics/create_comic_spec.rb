@@ -28,11 +28,11 @@ describe "Creating a comic" do
 	it "does not save a comic if it is invalid" do 
 		visit new_series_comic_path(@series)
 
-		click_button "Create Comic"
-
-		expect(current_path).to eq(current_path)
-
-		expect(page).to have_text("error")
+		expect { 
+      click_button 'Create Comic' 
+    }.not_to change(Comic, :count)
+        
+    expect(page).to have_text('error')
 	end
 
 end
