@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe UsersController do
 
-	before do 
-		@user = User.create!(user_attributes)
-	end
+	let(:user) { User.create!(user_attributes) }
 
 	context "when not signed in " do 
 
@@ -13,25 +11,25 @@ describe UsersController do
     end
 
 		it "cannot access show" do
-      get :show, id: @user
+      get :show, id: user
 
       expect(response).to redirect_to(signin_path)
     end
 
 		it "cannot access edit" do 
-			get :edit, id: @user
+			get :edit, id: user
 
 			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot access update" do 
-			patch :update, id: @user
+			patch :update, id: user
 
 			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot destroy the user" do 
-			delete :destroy, id: @user
+			delete :destroy, id: user
 
 			expect(response).to redirect_to(signin_path)
 		end
@@ -40,25 +38,26 @@ describe UsersController do
 
 	context "when signed in as the wrong user" do 
 
+		let(:wrong_user) { User.create!(user_attributes(email: "wrong@example.com")) }
+
 		before do
-      @wrong_user = User.create!(user_attributes(email: "wrong@example.com"))
-      session[:user_id] = @wrong_user.id
+      session[:user_id] = wrong_user.id
     end
 
 		it "cannot access edit for another user" do 
-			get :edit, id: @user
+			get :edit, id: user
 
 			expect(response).to redirect_to(series_index_url)
 		end
 
 		it "cannot access update for another user" do 
-			patch :update, id: @user
+			patch :update, id: user
 
 			expect(response).to redirect_to(series_index_url)
 		end
 
 		it "cannot destroy another user" do 
-			delete :destroy, id: @user
+			delete :destroy, id: user
 
 			expect(response).to redirect_to(series_index_url)
 		end

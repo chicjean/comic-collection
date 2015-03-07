@@ -1,6 +1,10 @@
 <header>
 	<%= link_to @series.name, @series, id: "show-title" %>
-	<span class="header-options"> <%= link_to "Edit Title", edit_series_path(@series) %>  |  <%= link_to "Delete Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %></span>
+	<span class="header-options"> <%= link_to "Edit Title", edit_series_path(@series) %>
+		<% if current_user_admin? %>
+			| <%= link_to "Delete Series", series_path(@series), method: :delete, data: {confirm: "Are you sure you want to delete this series and all of it's comics?"} %>
+		<% end %>
+	</span>
 </header>
 
 <%= hidden_field_tag 'series_id', @series_id %>

@@ -2,9 +2,7 @@ require 'rails_helper'
 
 describe ComicsController do
 
-	before do 
-		@series = Series.create!(series_attributes)
-	end
+	let(:series) { Series.create!(series_attributes) }
 
 	context "when not signed in as an authorized user" do 
 
@@ -13,19 +11,19 @@ describe ComicsController do
 		end
 
 		it "cannot accesst new" do
-			get :new, series_id: @series
+			get :new, series_id: series
 
 			expect(response).to redirect_to(signin_path)
 		end
 	
 		it "cannot access create" do 
-			post :create, series_id: @series
+			post :create, series_id: series
 
 			expect(response).to redirect_to(signin_path)
 		end
 
 		it "cannot access delete" do 
-			delete :destroy, id: 1, series_id: @series
+			delete :destroy, id: 1, series_id: series
 
 			expect(response).to redirect_to(signin_path)
 		end
@@ -40,7 +38,7 @@ describe ComicsController do
     end
 
 		it "cannot access delete" do 
-			delete :destroy, id: 1, series_id: @series
+			delete :destroy, id: 1, series_id: series
 
 			expect(response).to redirect_to(signin_path)
 		end

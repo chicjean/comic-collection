@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe "Deleting a user" do 
 
-	before do
-		@user = User.create!(user_attributes)
+	let(:user) { User.create!(user_attributes) }
 
-		sign_in(@user)
+	before do
+		sign_in(user)
 	end
 
 	 it "destroys the user and redirects to the main page" do 
-	 	visit user_path(@user)
+	 	visit user_path(user)
 
 	 	click_link "Delete Profile"
 
@@ -18,7 +18,7 @@ describe "Deleting a user" do
 	 end
 
 	 it "automatically signs out the user" do 
-	 	visit user_path(@user)
+	 	visit user_path(user)
 
 	 	click_link "Delete Profile"
 
