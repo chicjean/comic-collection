@@ -1,3 +1,3 @@
-Marvel comics come with a redemption code for an online copy of the issue. 
+Every Marvel comic book comes with a redemption code for an online copy of the issue. 
 
 This is a simple app to keep track of redeemed and unredeemed comic book redemtpion codes. 
