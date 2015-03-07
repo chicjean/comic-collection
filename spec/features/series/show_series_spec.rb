@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Viewing an individual series" do 
 
@@ -20,7 +20,7 @@ describe "Viewing an individual series" do
 
 		visit series_path(@series)
 
-		within_table('#show-comics')do
+		within(:css, 'table#show-comics') do
 			expect(page).not_to have_text("Delete")
 		end
 	end
@@ -42,8 +42,8 @@ describe "Viewing an individual series" do
 
 			visit series_path(@series)
 
-			within_table('#show-comics') do 
-				expect(page).not_to have_text(comic.redemption_code)
+			within(:css, 'table#show-comics') do
+				expect(page).to have_css('td.redeemed')
 			end
 		end
 		
@@ -52,8 +52,9 @@ describe "Viewing an individual series" do
 
 			visit series_path(@series)
 
-			within_table('#show-comics') do 
+			within(:css, 'table#show-comics') do
 				expect(page).to have_text(comic.redemption_code)
+				expect(page).not_to have_css('td.redeemed')
 			end
 		end
 
@@ -96,9 +97,9 @@ describe "Viewing an individual series when a user is an admin" do
 
 			visit series_path(@series)
 
-			within_table('#show-comics')do
-				expect(page).to have_text("Delete")
-			end
+			within(:css, 'table#show-comics') do
+			expect(page).to have_text("Delete")
+		end
 		end
 	
 end

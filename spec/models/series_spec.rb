@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "A series" do
 
@@ -45,11 +45,11 @@ describe "A series" do
 		expect(series2.errors[:name].any?).to eq(true)
 	end
 
-	it "sorts series by title alphabetically (alpha_sort)" do 
+	it "sorts series by title alphabetically (alpha_sort)" do
 		series1 = Series.create!(name: "Z Comic")
 		series2 = Series.create!(name: "A Comic")
 
-		Series.alpha_sort.should == [series2, series1]
+		expect(Series.alpha_sort).to eq([series2, series1])
 	end
 	
 end

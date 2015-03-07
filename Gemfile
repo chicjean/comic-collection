@@ -45,9 +45,11 @@ group :development, :test do
   gem 'spring'
 
   gem "minitest"
-  gem "rspec-rails", "2.14.1"
+  # gem "rspec-rails", "2.14.1"
+  gem 'rspec-rails', '~> 3.2.0'
 end
 
 group :test do
-  gem "capybara", "2.2.1"
+  # gem "capybara", "2.2.1"
+  gem 'capybara', '~> 2.4.4'
 end

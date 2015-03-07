@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UsersController do
 
@@ -42,7 +42,7 @@ describe UsersController do
 
 		before do
       @wrong_user = User.create!(user_attributes(email: "wrong@example.com"))
-      session[:user_id] = @wrong_user
+      session[:user_id] = @wrong_user.id
     end
 
 		it "cannot access edit for another user" do 
